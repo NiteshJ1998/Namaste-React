@@ -1,0 +1,30 @@
+{
+  "name": "02_igniting-our-app",
+  "version": "1.0.0",
+  "description": "Learning Namaste React by Akshay Saini",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NiteshJ1998/Namaste-React.git"
+  },
+  "keywords": [],
+  "author": "Nitesh Jaiswar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NiteshJ1998/Namaste-React/issues"
+  },
+  "homepage": "https://github.com/NiteshJ1998/Namaste-React#readme",
+  "devDependencies": {
+    "parcel": "^2.9.3",
+    "prettier": "^3.0.0-alpha.6",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
