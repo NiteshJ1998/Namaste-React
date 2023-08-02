@@ -41,7 +41,9 @@ const Header = () => {
   );
 };
 
-const RestaurantCard = () => {
+const RestaurantCard = (props) => {
+  const { resName, cuisine } = props;
+
   return (
     <div
       className="res-card"
@@ -54,8 +56,8 @@ const RestaurantCard = () => {
         src="https://b.zmtcdn.com/data/dish_photos/696/0d09830134d77cf8cb7f913cb3de1696.jpg"
         alt="res-logo"
       />
-      <h3>Dizvi Chinese Restaurants</h3>
-      <h4>Chinese food</h4>
+      <h3>{resName}</h3>
+      <h4>{cuisine}</h4>
       <h4>4.4 stars</h4>
       <h4>20 mins</h4>
     </div>
@@ -67,13 +69,8 @@ const Body = () => {
     <div className="body">
       <div className="search">Search</div>
       <div className="res-container">
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
+        <RestaurantCard resName="Dizwwy Foods" cuisine="Chinese foods" />
+        <RestaurantCard resName="KFC" cuisine="Fast Foods" />
       </div>
     </div>
   );
