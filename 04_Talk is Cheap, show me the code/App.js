@@ -41,8 +41,32 @@ const Header = () => {
   );
 };
 
+const RestaurantCard = (props) => {
+  const { resData } = props;
+
+  return (
+    <div
+      className="res-card"
+      style={{
+        backgroundColor: "#f0f0f0",
+      }}
+    >
+      <img
+        className="res-logo"
+        src="https://b.zmtcdn.com/data/dish_photos/696/0d09830134d77cf8cb7f913cb3de1696.jpg"
+        alt="res-logo"
+      />
+      <h3>{resData.data.name}</h3>
+      <h4>{resData.cuisines}</h4>
+      <h4>{resData.avgRating}</h4>
+      <h4>{resData.costForTwo / 100}</h4>
+      <h4>{resData.deliveryTime}</h4>
+    </div>
+  );
+};
+
 // RestaurantList is JSON Data for displaying cards
-const restaurantList = [
+const resObj = [
   {
     type: "restaurant",
     data: {
@@ -1860,103 +1884,21 @@ const restaurantList = [
   },
 ];
 
-// const RestaurantCard = (props) => {
-//   const { resName, cuisine } = props;
-
-//   return (
-//     <div
-//       className="res-card"
-//       style={{
-//         backgroundColor: "#f0f0f0",
-//       }}
-//     >
-//       <img
-//         className="res-logo"
-//         src="https://b.zmtcdn.com/data/dish_photos/696/0d09830134d77cf8cb7f913cb3de1696.jpg"
-//         alt="res-logo"
-//       />
-//       <h3>{resName}</h3>
-//       <h4>{cuisine}</h4>
-//       <h4>4.4 stars</h4>
-//       <h4>20 mins</h4>
-//     </div>
-//   );
-// };
-
-// const Body = () => {
-//   return (
-//     <div className="body">
-//       <div className="search">Search</div>
-//       <div className="res-container">
-//         <RestaurantCard resName="Dizwwy Foods" cuisine="Chinese foods" />
-//         <RestaurantCard resName="KFC" cuisine="Fast Foods" />
-//       </div>
-//     </div>
-//   );
-// };
-
-// const AppLayout = () => {
-//   return (
-//     <div className="app">
-//       <Header />
-//       <Body />
-//     </div>
-//   );
-// };
-
-// const root = ReactDOM.createRoot(document.getElementById("root"));
-
-// root.render(<AppLayout />);
-
-// Restaurant card component: Image, name, cuisine
-const RestaurantCard = ({
-  cloudinaryImageId,
-  name,
-  cuisines,
-  area,
-  lastMileTravelString,
-  costForTwoString,
-  avgRating,
-}) => {
-  return (
-    <div className="card">
-      <img
-        src={
-          "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
-          cloudinaryImageId
-        }
-      />
-      <h2>{name}</h2>
-      <h4>{cuisines.join(", ")}</h4>
-      <h4>{area}</h4>
-      <span>
-        <h4>
-          <i class="fa-solid fa-star"></i>
-          {avgRating}
-        </h4>
-        <h4>{lastMileTravelString}</h4>
-        <h4>{costForTwoString}</h4>
-      </span>
-    </div>
-  );
-};
-
-// Body Component for body section: It contain all restaurant cards
-// We are mapping restaurantList array and passing data to RestaurantCard component as props with unique key as index
 const Body = () => {
   return (
-    <div className="restaurant-list">
-      {restaurantList.map((restaurant) => {
-        return <RestaurantCard key={restaurant.data.id} {...restaurant.data} />;
-      })}
+    <div className="body">
+      <div className="search">Search</div>
+      <div className="res-container">
+        {/* (resData) ==> is key and (resObj) is javascript object  */}
+        <RestaurantCard resData={resObj} />
+      </div>
     </div>
   );
 };
 
-// AppLayout component to show: Header, Body, Footer
 const AppLayout = () => {
   return (
-    <div>
+    <div className="app">
       <Header />
       <Body />
     </div>
@@ -1964,4 +1906,5 @@ const AppLayout = () => {
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(<AppLayout />);
