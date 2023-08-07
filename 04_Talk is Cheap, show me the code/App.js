@@ -56,7 +56,7 @@ const RestaurantCard = (props) => {
         src="https://b.zmtcdn.com/data/dish_photos/696/0d09830134d77cf8cb7f913cb3de1696.jpg"
         alt="res-logo"
       />
-      <h3>{resData.data.name}</h3>
+      <h3>{resData.name}</h3>
       <h4>{resData.cuisines}</h4>
       <h4>{resData.avgRating}</h4>
       <h4>{resData.costForTwo / 100}</h4>
