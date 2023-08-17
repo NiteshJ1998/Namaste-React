@@ -44,6 +44,15 @@ const Header = () => {
 const RestaurantCard = (props) => {
   const { resData } = props;
 
+  const {
+    cloudinaryImageId,
+    name,
+    cuisines,
+    avgRating,
+    costForTwo,
+    deliveryTime,
+  } = resData?.data;
+
   return (
     <div
       className="res-card"
@@ -52,21 +61,24 @@ const RestaurantCard = (props) => {
       }}
     >
       <img
-        className="res-logo"
-        src="https://b.zmtcdn.com/data/dish_photos/696/0d09830134d77cf8cb7f913cb3de1696.jpg"
+        className={"logo" + "food"}
+        src={
+          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+          cloudinaryImageId
+        }
         alt="res-logo"
       />
-      <h3>{resData.name}</h3>
-      <h4>{resData.cuisines}</h4>
-      <h4>{resData.avgRating}</h4>
-      <h4>{resData.costForTwo / 100}</h4>
-      <h4>{resData.deliveryTime}</h4>
+      <h3>{name}</h3>
+      <h4>{cuisines.join(", ")}</h4>
+      <h4>{avgRating}</h4>
+      <h4>{costForTwo / 100} FOR TWO</h4>
+      <h4>{deliveryTime} Minutes</h4>
     </div>
   );
 };
 
 // RestaurantList is JSON Data for displaying cards
-const resObj = [
+const resList = [
   {
     type: "restaurant",
     data: {
@@ -1884,13 +1896,18 @@ const resObj = [
   },
 ];
 
+// not using keys (not acceptable) <<<< index as key <<<<<<<<<<<< unique id (best pracitce)
+
 const Body = () => {
   return (
     <div className="body">
       <div className="search">Search</div>
       <div className="res-container">
-        {/* (resData) ==> is key and (resObj) is javascript object  */}
-        <RestaurantCard resData={resObj} />
+        {/* (resData) ==> is key and (resObj) is javascript object */}
+
+        {resList.map((restaurant) => (
+          <RestaurantCard key={restaurant.data.id} resData={restaurant} />
+        ))}
       </div>
     </div>
   );
