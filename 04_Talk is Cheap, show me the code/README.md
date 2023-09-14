@@ -10,3 +10,4 @@ props are just normal argument to function
 ## Swiggy API
 
 config driven UI - Ui is driven by config config means API or data is config
+suppose we use swiggy in different location. swiggy gives different different ui to diff location.
